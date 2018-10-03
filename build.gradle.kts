@@ -24,7 +24,7 @@ group = "no.nav.dagpenger"
 
 application {
     applicationName = "dagpenger-features"
-    //mainClassName = "no.nav.dagpenger.Features.Test"
+    mainClassName = "no.nav.dagpenger.features.Features"
 }
 
 docker {
@@ -38,28 +38,13 @@ docker {
     tags(project.version.toString())
 }
 
-val kotlinLoggingVersion = "1.4.9"
-val fuelVersion = "1.15.0"
-val confluentVersion = "4.1.2"
-val kafkaVersion = "2.0.0"
+val cucumberVersion = "4.0.0"
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("no.nav.dagpenger:streams:0.1.2")
-    implementation("no.nav.dagpenger:events:0.1.4")
 
-    implementation("io.github.microutils:kotlin-logging:$kotlinLoggingVersion")
-    implementation("com.github.kittinunf.fuel:fuel:$fuelVersion")
-    implementation("com.github.kittinunf.fuel:fuel-gson:$fuelVersion")
-
-    compile("org.apache.kafka:kafka-clients:$kafkaVersion")
-    compile("org.apache.kafka:kafka-streams:$kafkaVersion")
-    compile("io.confluent:kafka-streams-avro-serde:$confluentVersion")
-
-    testImplementation(kotlin("test"))
-    testImplementation(kotlin("test-junit"))
-    testImplementation("junit:junit:4.12")
-    testImplementation("com.github.tomakehurst:wiremock:2.18.0")
+    testCompile("io.cucumber:cucumber-java8:$cucumberVersion")
+    testCompile("io.cucumber:cucumber-junit:$cucumberVersion")
 }
 
 spotless {
