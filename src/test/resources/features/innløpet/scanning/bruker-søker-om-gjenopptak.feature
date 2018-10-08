@@ -4,7 +4,7 @@ Egenskap: Bruker søker om gjenopptak av tidligere dagpengeperiode
   Scenariomal: Bruker har tidligere sak å gjenoppta
     Gitt at bruker har søkt om gjenopptak av dagpenger <rettighetstype>
     Og at bruker har en sak å gjenoppta
-    Og at bruker har <diskresjonskode>
+    Og at bruker har diskresjonskode <diskresjonskode>
     Når vi behandler journalføringen
     Så knyttes journalpost til eksisterende gsak
     Og journalpost ferdigstilles

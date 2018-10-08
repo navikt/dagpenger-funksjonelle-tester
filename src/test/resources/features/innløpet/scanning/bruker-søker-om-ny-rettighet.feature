@@ -4,7 +4,7 @@ Egenskap: Bruker søker om ny dagpengeperiode
   Scenariomal: Bruker har ingen sak å gjenoppta
     Gitt at bruker har søkt om dagpenger <rettighetstype>
     Og at bruker ikke har en sak å gjenoppta
-    Og at bruker har <diskresjonskode>
+    Og at bruker har diskresjonskode <diskresjonskode>
     Når vi behandler journalføringen
     Så opprettes fagsak
     Og ny gsak knyttes til fagsak
@@ -14,17 +14,10 @@ Egenskap: Bruker søker om ny dagpengeperiode
 
     Eksempler:
       | rettighetstype    | diskresjonskode | benk |
-      | uten permittering |                 | 4450 |
-      | ved permittering  |                 | 4455 |
-      | uten permittering | 6,7             | 4499 |
-      | ved permittering  | 6,7             | 4499 |
-
-  # Denne er feil
-  Scenario: Bruker har tidligere sak som kan gjenopptas
-    Gitt at bruker har søkt om DAGO
-    Og bruker har en tidligere sak som kan gjenopptas
-    Når vi behandler journalføringen
-    Så opprettes det en manuell journalføringsoppgave i Gosys
+      | uten permittering | ikke            | 4450 |
+      | ved permittering  | ikke            | 4455 |
+      | uten permittering | 6, 7            | 4499 |
+      | ved permittering  | 6, 7            | 4499 |
 
   Scenario: Bruker har søkt, men har allerede en aktiv sak
     Gitt at bruker har søkt
