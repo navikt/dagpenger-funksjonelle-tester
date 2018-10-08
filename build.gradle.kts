@@ -23,7 +23,7 @@ version = gitVersion()
 group = "no.nav.dagpenger"
 
 application {
-    applicationName = "dagpenger-features"
+    applicationName = "dagpenger-funksjonelle-tester"
     mainClassName = "no.nav.dagpenger.features.Features"
 }
 

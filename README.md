@@ -1,4 +1,4 @@
-# Dagpenger-features
+# Dagpenger-funksjonelle-tester
 
 # Komme i gang
 
