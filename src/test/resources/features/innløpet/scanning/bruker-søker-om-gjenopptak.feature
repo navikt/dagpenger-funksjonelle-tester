@@ -16,11 +16,11 @@ Egenskap: Bruker søker om gjenopptak av tidligere dagpengeperiode
       | ved permittering  | 4455 |
 
   Scenariomal: Bruker har har søkt, men har ikke tidligere sak å gjenoppta
-    Gitt at bruker har søkt om gjenopptak av dagpenger
+    Gitt at bruker har søkt om gjenopptak av dagpenger <rettighetstype>
     Og bruker ikke har en sak fra før
     Når vi behandler journalføringen
     Så opprettes det en generell GSAK sak
-    Så opprettes det en manuell journalføringsoppgave i Gosys
+    Så opprettes det en manuell journalføringsoppgave i Gosys på <benk>
 
     Eksempler:
       | rettighetstype    | benk |
@@ -31,6 +31,5 @@ Egenskap: Bruker søker om gjenopptak av tidligere dagpengeperiode
     Gitt at bruker har søkt om gjenopptak av dagpenger
     Og at bruker har diskresjonskode 6
     Når vi behandler journalføringen
-    Så opprettes det en manuell journalføringsoppgave i Gosys
-    #viken 2103
+    Så opprettes det en manuell journalføringsoppgave i Gosys på 2013
 
