@@ -7,15 +7,21 @@ plugins {
     id("com.adarshr.test-logger") version "1.5.0"
 }
 
+buildscript {
+    repositories {
+        maven("https://repo.adeo.no/repository/maven-central")
+    }
+}
+
 apply {
     plugin("com.diffplug.gradle.spotless")
     plugin("com.adarshr.test-logger")
 }
 
 repositories {
-    jcenter()
-    maven(url = "http://packages.confluent.io/maven/")
-    maven(url = "https://repo.adeo.no/repository/maven-releases/")
+    maven("https://repo.adeo.no/repository/maven-central")
+    maven("http://packages.confluent.io/maven/")
+    maven("https://repo.adeo.no/repository/maven-releases/")
 }
 
 val gitVersion: groovy.lang.Closure<Any> by extra
