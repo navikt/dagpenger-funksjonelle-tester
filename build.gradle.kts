@@ -28,7 +28,7 @@ group = "no.nav.dagpenger"
 
 application {
     applicationName = "dagpenger-funksjonelle-tester"
-    mainClassName = "no.nav.dagpenger.features.Features"
+    mainClassName = "no.nav.dagpenger.cucumber.RunCucumberKt"
 }
 
 docker {
@@ -44,15 +44,15 @@ docker {
     tags(project.version.toString())
 }
 
-val cucumberVersion = "4.0.0"
-
 dependencies {
     implementation(kotlin("stdlib"))
 
     implementation(Cucumber.java8)
     implementation(Cucumber.junit)
 
-    implementation(Fuel.fuel)
+    implementation(Fuel.fuel) {
+        exclude(group = "org.jetbrains.kotlin")
+    }
     implementation(Fuel.fuelMoshi)
 
     implementation(Junit5.api)
@@ -60,7 +60,9 @@ dependencies {
     implementation(Konfig.konfig)
 
     implementation(Moshi.moshi)
-    implementation(Moshi.moshiKotlin)
+    implementation(Moshi.moshiKotlin) {
+        exclude(group = "org.jetbrains.kotlin")
+    }
     implementation(Moshi.moshiAdapters)
 
     runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:${Kotlin.version}")

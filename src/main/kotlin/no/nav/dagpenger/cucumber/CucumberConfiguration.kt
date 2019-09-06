@@ -1,4 +1,4 @@
-package no.nav.dagpenger.regel.api.arena.adapter
+package no.nav.dagpenger.cucumber
 
 import com.natpryce.konfig.ConfigurationMap
 import com.natpryce.konfig.ConfigurationProperties

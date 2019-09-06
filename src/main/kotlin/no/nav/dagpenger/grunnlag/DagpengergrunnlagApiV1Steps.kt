@@ -1,11 +1,9 @@
-package no.nav.dagpenger.regel.api.arena.adapter
+package no.nav.dagpenger.grunnlag
 
 import cucumber.api.java8.No
 import no.nav.dagpenger.cucumber.parseJsonFrom
 import no.nav.dagpenger.cucumber.testApiClient
 import no.nav.dagpenger.derser.moshiInstance
-import no.nav.dagpenger.grunnlag.GrunnlagOgSatsParametere
-import no.nav.dagpenger.grunnlag.GrunnlagOgSatsSubsumsjon
 import org.junit.jupiter.api.Assertions.assertEquals
 import java.time.LocalDate
 

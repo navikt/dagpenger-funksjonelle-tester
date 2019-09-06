@@ -1,16 +1,14 @@
-package no.nav.dagpenger.regel.api.arena.adapter
+package no.nav.dagpenger.cucumber
 
-import cucumber.api.CucumberOptions
-import cucumber.api.junit.Cucumber
-import org.junit.runner.RunWith
+import cucumber.api.cli.Main
 
-@RunWith(Cucumber::class)
-@CucumberOptions(
-    plugin = [
-        "pretty",
-        "json:build/cucumber.json"
-    ],
-    features = ["src/uatTests/resources/features"],
-    tags = ["not @ignored"]
-)
-class RunCucumber
+val args = arrayOf(
+    "-g", "no.nav.dagpenger",
+    "-p", "pretty",
+//    "-p", " json:build/cucumber.json",
+    "classpath:features",
+    "--tags", "not @ignored ")
+
+fun main() {
+    Main.main(args)
+}
