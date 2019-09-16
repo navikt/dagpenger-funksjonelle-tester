@@ -32,14 +32,14 @@ application {
 }
 
 docker {
-    name = "repo.adeo.no:5443/navikt/${application.applicationName}"
+    name = "navikt/${application.applicationName}"
     buildArgs(
         mapOf(
             "APP_NAME" to application.applicationName,
             "DIST_TAR" to "${application.applicationName}-${project.version}"
         )
     )
-    files(tasks.findByName("distTar")?.outputs)
+    files(tasks.findByName("shadowJar")?.outputs)
     pull(true)
     tags(project.version.toString())
 }
