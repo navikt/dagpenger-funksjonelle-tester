@@ -2,32 +2,24 @@ pipeline {
   agent any
 
   stages {
-    stage('Install dependencies') {
+    stage('Build code and Docker Image') {
       steps {
-        sh "./gradlew assemble"
+        sh "./gradlew docker --info"
       }
     }
 
-    stage('Build') {
+    stage('Push to dockerhub') {
       steps {
-        sh "./gradlew check"
-      }
-
-      post {
-        always {
-          publishHTML target: [
-            allowMissing: true,
-            alwaysLinkToLastBuild: false,
-            keepAll: true,
-            reportDir: 'build/reports/tests/test',
-            reportFiles: 'index.html',
-            reportName: 'Test coverage'
-          ]
-
-          cucumber 'build/cucumber.json'
-
-          junit 'build/test-results/test/*.xml'
+        withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+          sh 'docker push navikt/dagpenger-funksjonelle-tester:latest'
         }
+      }
+    }
+
+    stage('Run feature tests') {
+      steps {
+        sh "kubectl config use-context dev-fss && kubectl delete -k kustomize/tests/app/ --ignore-not-found=true && kubectl apply -k kustomize/tests/app && kubectl wait --for=condition=complete --timeout=300s job/dagpenger-funksjonelle-tester -n dagpenger-test"
+        sh "kubectl logs -n dagpenger-test -l app=dagpenger-funksjonelle-tester --tail=1000"
       }
     }
   }

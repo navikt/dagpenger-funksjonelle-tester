@@ -9,7 +9,6 @@ import com.natpryce.konfig.overriding
 import com.natpryce.konfig.stringType
 import java.io.File
 
-
 private val localProperties = ConfigurationMap(
     mapOf(
         "application.profile" to "LOCAL",
@@ -39,7 +38,6 @@ private val config = when (System.getenv("CUCUMBER_ENV") ?: System.getProperty("
     }
 }
 
-
 data class CucumberConfiguration(
     val dpApiArenaAdapterUrl: String = config[Key("dp.regel.api.arena.adapter.url", stringType)],
     val stsIssuerUrl: String = config[Key("oidc.sts.issuerurl", stringType)],
@@ -59,4 +57,3 @@ data class CucumberConfiguration(
 enum class Profile {
     LOCAL, DEV
 }
-
