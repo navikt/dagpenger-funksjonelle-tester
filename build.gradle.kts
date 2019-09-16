@@ -1,18 +1,25 @@
 plugins {
-    id("application")
-    kotlin("jvm") version "1.3.21"
-    id("com.diffplug.gradle.spotless") version "3.13.0"
-    id("com.palantir.docker") version "0.20.1"
+    application
+    kotlin("jvm") version Kotlin.version
+    id(Spotless.spotless) version Spotless.version
+    id(Shadow.shadow) version Shadow.version
+    id("com.palantir.docker") version "0.22.1"
     id("com.palantir.git-version") version "0.11.0"
 }
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
 apply {
-    plugin("com.diffplug.gradle.spotless")
+    plugin(Spotless.spotless)
 }
 
 repositories {
     mavenCentral()
-    maven("http://packages.confluent.io/maven/")
+    maven("https://jitpack.io")
 }
 
 val gitVersion: groovy.lang.Closure<Any> by extra
@@ -21,37 +28,52 @@ group = "no.nav.dagpenger"
 
 application {
     applicationName = "dagpenger-funksjonelle-tester"
-    mainClassName = "no.nav.dagpenger.features.Features"
+    mainClassName = "no.nav.dagpenger.cucumber.RunCucumberKt"
 }
 
 docker {
-    name = "repo.adeo.no:5443/navikt/${application.applicationName}"
+    name = "navikt/${application.applicationName}"
     buildArgs(
         mapOf(
             "APP_NAME" to application.applicationName,
             "DIST_TAR" to "${application.applicationName}-${project.version}"
         )
     )
-    files(tasks.findByName("distTar")?.outputs)
+    files(tasks.findByName("shadowJar")?.outputs)
     pull(true)
     tags(project.version.toString())
 }
 
-val cucumberVersion = "4.0.0"
-
 dependencies {
     implementation(kotlin("stdlib"))
 
-    testCompile("io.cucumber:cucumber-java8:$cucumberVersion")
-    testCompile("io.cucumber:cucumber-junit:$cucumberVersion")
+    implementation(Cucumber.java8)
+    implementation(Cucumber.junit)
+
+    implementation(Fuel.fuel) {
+        exclude(group = "org.jetbrains.kotlin")
+    }
+    implementation(Fuel.fuelMoshi)
+
+    implementation(Junit5.api)
+
+    implementation(Konfig.konfig)
+
+    implementation(Moshi.moshi)
+    implementation(Moshi.moshiKotlin) {
+        exclude(group = "org.jetbrains.kotlin")
+    }
+    implementation(Moshi.moshiAdapters)
+
+    runtimeOnly("org.jetbrains.kotlin:kotlin-reflect:${Kotlin.version}")
 }
 
 spotless {
     kotlin {
-        ktlint("0.31.0")
+        ktlint(Klint.version)
     }
     kotlinGradle {
         target("*.gradle.kts", "additionalScripts/*.gradle.kts")
-        ktlint("0.31.0")
+        ktlint(Klint.version)
     }
 }
