@@ -32,16 +32,14 @@ application {
 }
 
 docker {
-    name = "navikt/${application.applicationName}"
+    name = "navikt/${application.applicationName}:latest"
     buildArgs(
         mapOf(
-            "APP_NAME" to application.applicationName,
-            "DIST_TAR" to "${application.applicationName}-${project.version}"
+            "APP_NAME" to application.applicationName
         )
     )
     files(tasks.findByName("shadowJar")?.outputs)
     pull(true)
-    tags(project.version.toString())
 }
 
 dependencies {
