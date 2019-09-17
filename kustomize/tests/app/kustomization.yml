@@ -4,4 +4,4 @@ namePrefix: "dagpenger-"
 commonLabels:
   app: dagpenger-funksjonelle-tester
 bases:
-  - github.com/navikt/dagpenger-funksjonelle-tester/kustomize/tests/base?ref=feature/Jenkins
+  - github.com/navikt/dagpenger-funksjonelle-tester/kustomize/tests/base
