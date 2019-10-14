@@ -10,7 +10,7 @@ spec:
       restartPolicy: Never
       initContainers:
         - name: vault-init
-          image: navikt/vault-sidekick:v0.3.10-98a7e32
+          image: navikt/vault-sidekick:v0.3.10-d122b16
           resources:
             limits:
               cpu: "1"
