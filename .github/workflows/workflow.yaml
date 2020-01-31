@@ -33,10 +33,10 @@ jobs:
           docker build -t $IMAGE .
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
           docker push $IMAGE
-      - name: 'Kustomize Build'
-        uses: karancode/kustomize-github-action@master
+      - uses: imranismail/setup-kustomize@master
         with:
-          kustomize_version: '3.5.0'
-          kustomize_build_dir: './kustomize/tests/app'
-          kustomize_build_output: "./testjob.yaml"
-
+          kustomize-version: "3.5.0"
+      - name: 'Kustomize Build'
+        run: |
+          kustomize build ./kustomize/tests/app -o ./kustomize/testjob.yaml
+          cat ./kustomize/testjob.yaml
