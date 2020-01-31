@@ -42,7 +42,7 @@ jobs:
         uses: imranismail/setup-kustomize@master
         with:
           kustomize-version: "3.5.0"
-      - name: 'Kustomize Build'
-        run: |
-          kustomize build ./kustomize/tests/app -o ./kustomize/testjob.yaml
-          cat ./kustomize/testjob.yaml
+     - name: 'Kustomize Build'
+       run: |
+         kustomize build ./kustomize/tests/app -o ./kustomize/testjob.yaml
+         cat ./kustomize/testjob.yaml
