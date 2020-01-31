@@ -43,4 +43,3 @@ jobs:
         with:
           kustomize_version: '3.5.0'
           kustomize_build_dir: 'kustomize/tests/app'
-          kustomize_build_output: "kustomize/testjob.yaml"
