@@ -3,8 +3,7 @@ name: Build and deploy
 on: [push]
 
 env:
-  IMAGE: "docker.pkg.github.com/dagpenger-funksjonelle-tester/cucumber-tester:latest"
-
+  IMAGE: "docker.pkg.github.com/dagpenger-funksjonelle-tester/dagpenger-features:latest"
 jobs:
 
   build:
@@ -25,13 +24,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       - name: Build with Gradle
-        run: ./gradlew docker --info
-      - name: Publish Docker image
+        run: ./gradlew build --info
+      - name: Build and Publish Docker image
 #        if: github.ref == 'refs/heads/master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "IMAGE = $IMAGE"
+          docker build -t $IMAGE .
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-          docker push "${IMAGE}"
+          docker push $IMAGE
 
