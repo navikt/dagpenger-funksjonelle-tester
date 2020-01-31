@@ -32,7 +32,7 @@ application {
 }
 
 docker {
-    name = "navikt/${application.applicationName}:latest"
+    name = "docker.pkg.github.com/${application.applicationName}/cucumber-tester:latest"
     buildArgs(
         mapOf(
             "APP_NAME" to application.applicationName
