@@ -38,9 +38,9 @@ jobs:
     steps:
      -  name: Checkout code
         uses: actions/checkout@v2
-    - name: 'Kustomize Build'
-      uses: karancode/kustomize-github-action@master
-      with:
-        kustomize_version: '3.5.0'
-        kustomize_build_dir: 'kustomize/tests/app'
-        kustomize_build_output: "kustomize/testjob.yaml"
+     -  name: 'Kustomize Build'
+        uses: karancode/kustomize-github-action@master
+        with:
+          kustomize_version: '3.5.0'
+          kustomize_build_dir: 'kustomize/tests/app'
+          kustomize_build_output: "kustomize/testjob.yaml"
