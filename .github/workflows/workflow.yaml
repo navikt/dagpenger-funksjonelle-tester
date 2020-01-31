@@ -33,10 +33,10 @@ jobs:
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
           docker push $IMAGE
   kustomize:
-    name: Build
+    name: Kustomize
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+     -  name: Checkout code
         uses: actions/checkout@v2
      -  name: Setup kustomize
         uses: imranismail/setup-kustomize@master
