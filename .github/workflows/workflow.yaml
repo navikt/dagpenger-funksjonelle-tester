@@ -33,5 +33,5 @@ jobs:
         run: |
           echo "IMAGE = $IMAGE"
           docker login docker.pkg.github.com -u ${GITHUB_REPOSITORY} -p ${GITHUB_TOKEN}
-          docker push ${IMAGE}
+          docker push "${IMAGE}"
 
