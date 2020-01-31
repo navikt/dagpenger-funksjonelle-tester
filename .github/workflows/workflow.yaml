@@ -38,7 +38,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-     -  uses: imranismail/setup-kustomize@master
+     -  name: Setup kustomize
+        uses: imranismail/setup-kustomize@master
         with:
           kustomize-version: "3.5.0"
       - name: 'Kustomize Build'
