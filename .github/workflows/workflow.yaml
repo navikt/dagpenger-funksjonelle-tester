@@ -38,6 +38,10 @@ jobs:
     steps:
      -  name: Checkout code
         uses: actions/checkout@v2
+     -  name: Setup no
+        uses: actions/setup-node@v1
+        with:
+        node-version: 'l4.0'
      -  name: 'Kustomize Build'
         uses: imranismail/setup-kustomize@v1.2.0
         with:
