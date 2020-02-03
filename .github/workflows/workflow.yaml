@@ -41,7 +41,7 @@ jobs:
      -  name: Setup no
         uses: actions/setup-node@v1
         with:
-          node-version: '14.0'
+          node-version: '13.7.0'
      -  name: 'Kustomize Build'
         uses: imranismail/setup-kustomize@v1.2.0
         with:
