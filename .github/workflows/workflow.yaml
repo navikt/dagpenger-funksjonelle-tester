@@ -49,5 +49,15 @@ jobs:
         with:
           name: testjob.yml
           path: testjob.yml
+  deploy: 
+    name: Run test job
+    needs: kustomize
+    runs-on: ubuntu-latest
+    steps: 
+      - name: download testjob.yaml
+        uses: actions/download-artifact@v1
+        with:
+          name: testjob.yml
+
  
 
