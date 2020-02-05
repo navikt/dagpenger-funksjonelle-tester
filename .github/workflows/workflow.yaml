@@ -3,7 +3,7 @@ name: Build and deploy
 on: [push]
 
 env:
-  IMAGE: "docker.pkg.github.com/${{ github.repository }}/dagpenger-features:latest"
+  IMAGE: "docker.pkg.github.com/${{ github.repository }}/dagpenger-funksjonelle-tester:latest"
 jobs:
   build:
     name: Build tests, package tests in docker image and push docker image
@@ -35,13 +35,19 @@ jobs:
 
   kustomize: 
     name: Create and upload testsjob yaml using kustomize.
-    needs: build
     runs-on: ubuntu-latest
     steps: 
       - name: Setup kustomize
         uses: gtcno/setup-kustomize@master
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Set image
+        run: |
+          pwd
+          echo $GITHUB_WORKSPACE
+          ls
+          cd kustomize/tests/base
+          kustomize edit set image navikt/dagpenger-funksjonelle-tester=$IMAGE
       - name: kustomize build
         run: kustomize build kustomize/tests/app -o testjob.yml
       - name: Upload testjob.yaml
@@ -49,21 +55,3 @@ jobs:
         with:
           name: testjob.yml
           path: testjob.yml
-  deploy: 
-    name: Run test job
-    needs: kustomize
-    runs-on: ubuntu-latest
-    steps: 
-      - name: download testjob.yml
-        uses: actions/download-artifact@v1
-        with:
-          name: testjob.yml
-      - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-          CLUSTER: dev-fss
-          RESOURCE: testjob.yml
-          WAIT: true
-
- 
-
