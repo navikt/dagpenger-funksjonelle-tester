@@ -45,7 +45,7 @@ jobs:
         run: |
           cd kustomize/tests/app
           kustomize edit set image navikt/dagpenger-funksjonelle-tester=$IMAGE
-          kustomize build kustomize/tests/app -o $GITHUB_WORKSPACE/testjob.yml
+          kustomize build -o $GITHUB_WORKSPACE/testjob.yml
       - name: Upload testjob.yaml
         uses: actions/upload-artifact@v1
         with:
