@@ -43,13 +43,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Set image
         run: |
-          pwd
-          echo $GITHUB_WORKSPACE
-          ls
-          cd kustomize/tests/base
+          cd kustomize/tests/app
           kustomize edit set image navikt/dagpenger-funksjonelle-tester=$IMAGE
-      - name: kustomize build
-        run: kustomize build kustomize/tests/app -o testjob.yml
+          kustomize build kustomize/tests/app -o $GITHUB_WORKSPACE/testjob.yml
       - name: Upload testjob.yaml
         uses: actions/upload-artifact@v1
         with:
