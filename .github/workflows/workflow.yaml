@@ -6,7 +6,7 @@ env:
   IMAGE: "docker.pkg.github.com/${{ github.repository }}/dagpenger-features:latest"
 jobs:
   build:
-    name: Build
+    name: Build tests, package tests in docker image and push docker image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -34,7 +34,7 @@ jobs:
           docker push $IMAGE
 
   kustomize: 
-    name: Kustomize
+    name: Create and upload testsjob yaml using kustomize.
     needs: build
     runs-on: ubuntu-latest
     steps: 
@@ -43,6 +43,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: kustomize build
-        run: kustomize build  kustomize/tests/app -o testjob.yml
-
+        run: kustomize build kustomize/tests/app -o testjob.yml
+      - name: Upload testjob.yaml
+        uses: actions/upload-artifact@v1
+        with:
+          name: testjob.yml
+          path: testjob.yml
+ 
 
