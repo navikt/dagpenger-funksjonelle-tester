@@ -54,10 +54,16 @@ jobs:
     needs: kustomize
     runs-on: ubuntu-latest
     steps: 
-      - name: download testjob.yaml
+      - name: download testjob.yml
         uses: actions/download-artifact@v1
         with:
           name: testjob.yml
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-fss
+          RESOURCE: testjob.yml
+          WAIT: true
 
  
 
