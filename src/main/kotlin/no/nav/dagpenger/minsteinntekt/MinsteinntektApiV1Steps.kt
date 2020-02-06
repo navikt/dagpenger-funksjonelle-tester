@@ -1,7 +1,7 @@
 package no.nav.dagpenger.regel.api.arena.adapter
 
 import com.squareup.moshi.JsonAdapter
-import cucumber.api.java8.No
+import io.cucumber.java8.No
 import no.nav.dagpenger.cucumber.parseJsonFrom
 import no.nav.dagpenger.cucumber.testApiClient
 import no.nav.dagpenger.derser.moshiInstance

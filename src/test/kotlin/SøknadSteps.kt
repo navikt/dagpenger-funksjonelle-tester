@@ -1,4 +1,4 @@
-import cucumber.api.java8.No
+import io.cucumber.java8.No
 
 import cucumber.api.PendingException
 
