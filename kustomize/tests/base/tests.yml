@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: funksjonelle-tester
+  generateName: funksjonelle-tester
 spec:
   backoffLimit: 2
   template:
