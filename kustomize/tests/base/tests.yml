@@ -54,6 +54,8 @@ spec:
             value: changeme
           image: navikt/dagpenger-funksjonelle-tester:latest
           imagePullPolicy: Always
+          imagePullSecrets:
+            - name: gpr-credentials
           volumeMounts:
           - mountPath: /etc/ssl/certs/ca-certificates.crt
             name: ca-bundle
