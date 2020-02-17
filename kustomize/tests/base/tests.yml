@@ -6,6 +6,8 @@ spec:
   backoffLimit: 2
   template:
     spec:
+      imagePullSecrets:
+        - name: gpr-credentials
       serviceAccountName: default
       restartPolicy: Never
       initContainers:
@@ -53,8 +55,6 @@ spec:
             value: changeme
           image: navikt/dagpenger-funksjonelle-tester:latest
           imagePullPolicy: Always
-          imagePullSecrets:
-            - name: gpr-credentials
           volumeMounts:
           - mountPath: /etc/ssl/certs/ca-certificates.crt
             name: ca-bundle
