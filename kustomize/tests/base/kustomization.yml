@@ -3,6 +3,8 @@ bases:
 
 # Adds namespace to all resources.
 namespace: dagpenger-test
+commonLabels:
+  team: teamdagpenger
 
 # Each entry in this list must resolve to an existing
 # resource definition in YAML.  These are the resource
