@@ -41,11 +41,9 @@ jobs:
         uses: gtcno/setup-kustomize@master
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set image
+      - name: Kustomize test job
         run: |
-          cd kustomize/tests/app
-          kustomize edit set image navikt/dagpenger-funksjonelle-tester=$IMAGE
-          kustomize build -o $GITHUB_WORKSPACE/testjob.yml
+          kustomize build kustomize/tests/app -o $GITHUB_WORKSPACE/testjob.yml
       - name: Upload testjob.yaml
         uses: actions/upload-artifact@v1
         with:
