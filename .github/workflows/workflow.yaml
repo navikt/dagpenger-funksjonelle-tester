@@ -51,8 +51,8 @@ jobs:
         with:
           name: nais
           path: testjob.yml
-  deploy:
-    name: Deploy to NAIS
+  run:
+    name: Run tests as a Job
     needs: [build, kustomize]
     runs-on: ubuntu-latest
     steps:
