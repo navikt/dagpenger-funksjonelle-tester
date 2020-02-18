@@ -3,7 +3,6 @@ plugins {
     kotlin("jvm") version Kotlin.version
     id(Spotless.spotless) version Spotless.version
     id(Shadow.shadow) version Shadow.version
-    id("com.palantir.docker") version "0.22.1"
     id("com.palantir.git-version") version "0.11.0"
 }
 
@@ -29,17 +28,6 @@ group = "no.nav.dagpenger"
 application {
     applicationName = "dagpenger-funksjonelle-tester"
     mainClassName = "no.nav.dagpenger.cucumber.RunCucumberKt"
-}
-
-docker {
-    name = "docker.pkg.github.com/${application.applicationName}/cucumber-tester:latest"
-    buildArgs(
-        mapOf(
-            "APP_NAME" to application.applicationName
-        )
-    )
-    files(tasks.findByName("shadowJar")?.outputs)
-    pull(true)
 }
 
 dependencies {
