@@ -6,10 +6,12 @@ spec:
   backoffLimit: 2
   template:
     spec:
+      imagePullSecrets:
+        - name: gpr-credentials
       serviceAccountName: default
       restartPolicy: Never
       initContainers:
-        - name: vault-init
+        - name: vks-init
           image: navikt/vault-sidekick:v0.3.10-d122b16
           resources:
             limits:
