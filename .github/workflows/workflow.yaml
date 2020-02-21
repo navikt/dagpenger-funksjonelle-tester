@@ -37,13 +37,13 @@ jobs:
     name: Create and upload testsjob yaml using kustomize.
     runs-on: ubuntu-latest
     steps: 
-      - name: Setup kustomize
-        uses: gtcno/setup-kustomize@master
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Kustomize test job
-        run: |
-          kustomize build kustomize/tests/app -o $GITHUB_WORKSPACE/testjob.yml
+        uses: stefanprodan/kube-tools@master
+        with:
+          command: | 
+            kustomize build kustomize/tests/app -o $GITHUB_WORKSPACE/testjob.yml
       - name: Upload testjob.yaml
         uses: actions/upload-artifact@v1
         with:
