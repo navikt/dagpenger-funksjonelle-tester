@@ -46,7 +46,7 @@ enum class GrunnlagBeregningsregel {
 data class Grunnlag(
     val avkortet: Int,
     val uavkortet: Int? = null,
-    val beregningsregel: GrunnlagBeregningsregel? = null,
+    val beregningsregel: GrunnlagBeregningsregel? = null
 )
 
 data class Sats(
