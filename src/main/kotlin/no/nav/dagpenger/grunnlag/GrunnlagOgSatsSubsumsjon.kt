@@ -30,7 +30,6 @@ data class GrunnlagOgSatsRegelFaktum(
 data class GrunnlagOgSatsResultat(
     val grunnlag: Grunnlag? = null,
     val sats: Sats,
-    val beregningsRegel: GrunnlagBeregningsregel,
     val benyttet90ProsentRegel: Boolean
 )
 
@@ -46,10 +45,17 @@ enum class GrunnlagBeregningsregel {
 
 data class Grunnlag(
     val avkortet: Int,
-    val uavkortet: Int? = null
+    val uavkortet: Int? = null,
+    val beregningsregel: GrunnlagBeregningsregel? = null,
 )
 
 data class Sats(
     val dagsats: Int,
-    val ukesats: Int
+    val ukesats: Int,
+    val beregningsregel: SatsBeregningsregel? = null
 )
+
+enum class SatsBeregningsregel {
+    ORDINAER,
+    KORONA
+}
