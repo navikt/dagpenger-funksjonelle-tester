@@ -15,13 +15,6 @@ Egenskap: Hent dagpengergrunnlag
     Og er ukessats satt til 2165
     Og dagsats satt til 433
 
-  Scenario: Beregn grunnlag og sats gitt inntekt med korona-beregning
-    Gitt at søker med aktør id "1.5_G_INNTEKT" med vedtak id 12345 med beregningsdato "2020-03-21" i beregning av grunnlag
-    Når digidag skal beregne grunnlag
-    Så er grunnlag satt til avkortet satt til 180374 og uavkortet til 180374
-    Og er ukessats satt til 2775
-    Og dagsats satt til 555
-
   Scenario: Beregn grunnlag og sats gitt manuelt grunnlag
     Gitt at søker med aktør id "INGEN_INNTEKT" med vedtak id 12345 med beregningsdato "2019-07-01" i beregning av grunnlag
     Og det er beregnet med et manuelt grunnlag på 600000
