@@ -1,7 +1,7 @@
 package no.nav.dagpenger.minsteinntekt
 
-import no.nav.dagpenger.grunnlag.InntektsPeriode
 import java.time.LocalDate
+import no.nav.dagpenger.grunnlag.InntektsPeriode
 
 data class MinsteinntektOgPeriodeParametere(
     val aktorId: String,

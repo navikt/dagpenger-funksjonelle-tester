@@ -1,11 +1,11 @@
 package no.nav.dagpenger.grunnlag
 
 import io.cucumber.java8.No
+import java.time.LocalDate
 import no.nav.dagpenger.cucumber.parseJsonFrom
 import no.nav.dagpenger.cucumber.testApiClient
 import no.nav.dagpenger.derser.moshiInstance
 import org.junit.jupiter.api.Assertions.assertEquals
-import java.time.LocalDate
 
 class DagpengergrunnlagApiV1Steps : No {
 

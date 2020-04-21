@@ -1,9 +1,9 @@
 package no.nav.dagpenger.minsteinntekt
 
-import no.nav.dagpenger.grunnlag.Inntekt
-import no.nav.dagpenger.grunnlag.InntektsPeriode
 import java.time.LocalDate
 import java.time.LocalDateTime
+import no.nav.dagpenger.grunnlag.Inntekt
+import no.nav.dagpenger.grunnlag.InntektsPeriode
 
 data class MinsteinntektOgPeriodeSubsumsjon(
     val minsteinntektSubsumsjonsId: String,

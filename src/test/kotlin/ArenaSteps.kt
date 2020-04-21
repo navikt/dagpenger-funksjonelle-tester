@@ -1,6 +1,5 @@
-import io.cucumber.java8.No
-
 import cucumber.api.PendingException
+import io.cucumber.java8.No
 
 class ArenaSteps : No {
     init {
