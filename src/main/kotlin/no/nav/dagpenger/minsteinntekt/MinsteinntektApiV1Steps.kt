@@ -2,8 +2,6 @@ package no.nav.dagpenger.regel.api.arena.adapter
 
 import com.squareup.moshi.JsonAdapter
 import io.cucumber.java8.No
-import java.time.LocalDate
-import java.time.YearMonth
 import no.nav.dagpenger.cucumber.parseJsonFrom
 import no.nav.dagpenger.cucumber.testApiClient
 import no.nav.dagpenger.derser.moshiInstance
@@ -13,6 +11,8 @@ import no.nav.dagpenger.minsteinntekt.MinsteinntektOgPeriodeSubsumsjon
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
+import java.time.LocalDate
+import java.time.YearMonth
 
 class MinsteinntektApiV1Steps : No {
 
