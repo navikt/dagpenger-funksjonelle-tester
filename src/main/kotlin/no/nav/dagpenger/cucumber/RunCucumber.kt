@@ -7,7 +7,8 @@ val args = arrayOf(
     "-p", "pretty",
     "--strict",
     "classpath:features",
-    "--tags", "not @ignored ")
+    "--tags", "not @ignored "
+)
 
 fun main() {
     Main.main(args)

@@ -41,10 +41,12 @@ private val config = when (System.getenv("CUCUMBER_ENV") ?: System.getProperty("
 data class CucumberConfiguration(
     val dpApiArenaAdapterUrl: String = config[Key("dp.regel.api.arena.adapter.url", stringType)],
     val stsIssuerUrl: String = config[Key("oidc.sts.issuerurl", stringType)],
-    val profile: Profile = config[Key(
-        "application.profile",
-        stringType
-    )].let { Profile.valueOf(it) },
+    val profile: Profile = config[
+        Key(
+            "application.profile",
+            stringType
+        )
+    ].let { Profile.valueOf(it) },
     val username: String = config.getOrElse(Key("cucumber.test.username", stringType)) {
         config[Key("srvdp.regel.api.arena.adapter.username", stringType)]
     },
