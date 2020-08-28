@@ -3,11 +3,14 @@ package no.nav.dagpenger.cucumber
 import io.cucumber.core.cli.Main
 
 val args = arrayOf(
-    "-g", "no.nav.dagpenger",
-    "-p", "pretty",
+    "-g",
+    "no.nav.dagpenger",
+    "-p",
+    "pretty",
     "--strict",
     "classpath:features",
-    "--tags", "not @ignored "
+    "--tags",
+    "not @ignored "
 )
 
 fun main() {

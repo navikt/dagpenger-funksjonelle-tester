@@ -19,14 +19,16 @@ class TestApiClient(config: CucumberConfiguration = CucumberConfiguration()) {
     init {
         if (config.disableSSL) {
             FuelManager.instance.apply {
-                val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
-                    override fun getAcceptedIssuers(): Array<X509Certificate>? = null
-                    override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) =
-                        Unit
+                val trustAllCerts = arrayOf<TrustManager>(
+                    object : X509TrustManager {
+                        override fun getAcceptedIssuers(): Array<X509Certificate>? = null
+                        override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) =
+                            Unit
 
-                    override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) =
-                        Unit
-                })
+                        override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) =
+                            Unit
+                    }
+                )
 
                 socketFactory = SSLContext.getInstance("SSL").apply {
                     init(null, trustAllCerts, java.security.SecureRandom())
