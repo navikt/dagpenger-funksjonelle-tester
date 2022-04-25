@@ -6,7 +6,7 @@ metadata:
   labels:
     team: teamdagpenger
 spec:
-  ttlSecondsAfterFinished: 1
+  ttlSecondsAfterFinished: 60
   backoffLimit: 2
   template:
     metadata:
