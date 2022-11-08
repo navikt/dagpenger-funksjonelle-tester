@@ -19,6 +19,8 @@ spec:
       restartPolicy: Never
       initContainers:
         - name: vks-init
+          securityContext:
+            allowPrivilegeEscalation: false
           image: navikt/vault-sidekick:v0.3.10-d122b16
           resources:
             limits:
