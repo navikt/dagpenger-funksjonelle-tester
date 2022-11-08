@@ -46,6 +46,8 @@ spec:
               subPath: subpath/var/run/secrets/nais.io/vault
       containers:
         - name: dp-funksjonelle-tester
+          securityContext:
+            allowPrivilegeEscalation: false
           resources:
             limits:
               cpu: "1"
