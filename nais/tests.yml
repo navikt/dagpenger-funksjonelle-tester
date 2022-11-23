@@ -9,9 +9,6 @@ spec:
   ttlSecondsAfterFinished: 60
   backoffLimit: 2
   template:
-    metadata:
-      labels:
-        team: teamdagpenger
     spec:
       imagePullSecrets:
         - name: gpr-credentials
