@@ -8,7 +8,7 @@ plugins {
 
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -27,7 +27,7 @@ group = "no.nav.dagpenger"
 
 application {
     applicationName = "dagpenger-funksjonelle-tester"
-    mainClassName = "no.nav.dagpenger.cucumber.RunCucumberKt"
+    mainClass.set("no.nav.dagpenger.cucumber.RunCucumberKt")
 }
 
 dependencies {
